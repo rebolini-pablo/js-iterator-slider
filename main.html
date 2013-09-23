@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- Js Iterator Pattern for Image Slider
+			 @author Rebolini Pablo <rebolini.pablo[arroba]gmail.com> -->
+			 
+		<title>JS Iterator Pattern . Image Slider</title>
+		
+		<style>
+			body{
+				font-family: 'Calibri', 'Trebuchet MS', Sans-serif;
+				background:black;
+			}
+			
+			#wrapper{
+				width: 450px;
+				height: 200px;
+				padding: 10px;
+				background: #999999;
+			}
+			
+			#iSlider{
+				/* Tamaño y posicion */
+				width:100%;
+				height:100%;
+				position:fixed;
+				top:0;
+				left:0;
+				z-index:-999;
+
+				/* Fondo */
+				background: url('imagenes/ph_default.jpg') no-repeat center center fixed; 
+				-webkit-background-size: cover;
+				-moz-background-size: cover;
+				-o-background-size: cover;
+				background-size: cover;
+				background-color:#000000;
+			}
+
+			#iSlider_overlay{
+				width: 100%;
+				height: 100%;
+				background: rgba(0,0,0,0.6);
+				display:none;
+			}
+
+		</style>
+	</head>
+
+	<body>
+		<script>
+			/**
+			 * Objeto de configuracion para el slider
+			 * el camio 'id' no es realmente necesario...
+ 			 */
+			var iS_Conf = [
+				{ "id": "94", "ruta": "imagenes\/ph_1.jpg" },
+				{ "id": "95", "ruta": "imagenes\/ph_2.jpg" },
+				{ "id": "93", "ruta": "imagenes\/ph_3.jpg" }
+			];
+		</script>
+		
+		<div id="iSlider">
+			<!-- La capa iSlider_overlay es una capa alternativa
+				 para mostrar un 'manto' sobre la imagen de fondo.
+				 No es necesaria para el funcionamiento del slider.	-->
+			<div id="iSlider_overlay">&nbsp</div>
+		</div>
+		
+		<div id="wrapper">
+			<h1>Bienvenido visitante!</h1>
+			<h2>Lorem impsum dolor sit amet.</h2>
+			<button id="btnOverlay">Toggle Overlay</button>
+		</div>
+		
+		<!-- Libreria jQuery -->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		
+		<!-- Slider -->
+		<script src="iSlider.js"></script>		
+		
+		<script>
+			$(document).ready(function(){
+				iSlider.play();
+				
+				$('#btnOverlay').on('click', function(){
+					$('#iSlider_overlay').toggle();
+				});
+			});
+		</script>
+	</body>
+</html>
